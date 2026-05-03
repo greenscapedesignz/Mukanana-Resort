@@ -15,6 +15,8 @@
             --text-main: #f4f1ea; 
             --text-dim: #a8a9a6;
             --chart-bg: #1a2f24;
+            --eco-green: #2e4a3d;
+            --eco-light: #5a7d6a;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -78,19 +80,13 @@
 
         /* Stats Infographic */
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 3rem 0; }
-        .stat-card {
-            background: var(--bg-card); padding: 2rem; text-align: center;
-            border-top: 3px solid var(--accent-gold); border-radius: 4px;
-        }
+        .stat-card { background: var(--bg-card); padding: 2rem; text-align: center; border-top: 3px solid var(--accent-gold); border-radius: 4px; }
         .stat-number { font-family: 'Cinzel', serif; font-size: 3rem; color: var(--accent-gold); line-height: 1; margin-bottom: 0.5rem; }
         .stat-title { font-weight: 600; font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.5rem; }
         .stat-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
 
         /* Comparison Infographic */
-        .comparison-table {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 3rem 0;
-            border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+        .comparison-table { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 3rem 0; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .comp-col { padding: 3rem 2rem; }
         .comp-old { background: #1a221d; border-right: 1px solid rgba(255,255,255,0.05); }
         .comp-new { background: var(--chart-bg); }
@@ -111,24 +107,57 @@
         .value-card h3 { color: var(--accent-gold); margin-bottom: 1rem; font-size: 1.2rem; display: flex; align-items: center; gap: 1rem; }
         .value-card h3 span { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; background: rgba(212, 175, 55, 0.1); padding: 4px 10px; border-radius: 20px; letter-spacing: 1px; }
 
+        /* --- EMBEDDED PROPRIETARY INFOGRAPHICS --- */
+        .proprietary-container { background: var(--bg-card); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 12px; padding: 4rem; box-shadow: 0 20px 50px rgba(0,0,0,0.5); margin-bottom: 4rem; }
+        
+        /* 1. ILI Flow */
+        .ili-flow { display: flex; justify-content: space-between; position: relative; margin-top: 3rem; }
+        .ili-flow::before { content: ''; position: absolute; top: 40px; left: 10%; right: 10%; height: 2px; background: rgba(212, 175, 55, 0.3); z-index: 1; }
+        .ili-step { position: relative; z-index: 2; width: 22%; text-align: center; }
+        .ili-icon { width: 80px; height: 80px; background: var(--bg-deep); border: 2px solid var(--accent-gold); border-radius: 50%; margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--accent-gold); box-shadow: 0 0 20px rgba(212, 175, 55, 0.15); }
+        .ili-title { font-weight: 600; color: var(--text-main); margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+        .ili-desc { font-size: 0.85rem; color: var(--text-dim); }
+
+        /* 2. Habitat Matrix */
+        .habitat-wrapper { display: flex; gap: 3rem; align-items: center; margin-top: 3rem; }
+        .habitat-bird { flex: 1; text-align: center; padding: 2rem; background: radial-gradient(circle at center, var(--eco-green) 0%, var(--bg-deep) 100%); border-radius: 50%; border: 1px solid var(--eco-light); }
+        .habitat-bird h3 { font-family: 'Cinzel', serif; color: var(--accent-gold); font-size: 1.5rem; margin-bottom: 0.2rem; }
+        .habitat-bird p { font-size: 0.8rem; font-style: italic; color: var(--text-dim); margin-bottom: 1rem; }
+        .habitat-layers { flex: 1.5; display: flex; flex-direction: column; gap: 1rem; }
+        .layer-card { background: rgba(0,0,0,0.3); border-left: 4px solid var(--eco-light); padding: 1.5rem; border-radius: 4px; }
+        .layer-card h4 { margin: 0 0 0.5rem 0; color: var(--eco-light); font-family: 'Montserrat', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
+        .layer-card p { margin: 0; font-size: 0.9rem; color: var(--text-dim); }
+
+        /* 3. GDHI Dashboard */
+        .gdhi-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; margin-bottom: 3rem; }
+        .gdhi-brand { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--accent-gold); }
+        .gdhi-brand span { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 3px; color: var(--text-dim); display: block; text-transform: uppercase; }
+        .gdhi-score { text-align: right; }
+        .gdhi-score .num { font-size: 3rem; font-family: 'Cinzel', serif; color: var(--text-main); line-height: 1; }
+        .gdhi-metrics { display: flex; justify-content: space-between; gap: 2rem; }
+        .metric-dial { text-align: center; width: 30%; }
+        .circular-chart { display: block; margin: 0 auto; max-width: 120px; max-height: 120px; }
+        .circle-bg { fill: none; stroke: rgba(255,255,255,0.05); stroke-width: 3; }
+        .circle { fill: none; stroke-width: 3; stroke-linecap: round; animation: progress 1s ease-out forwards; }
+        .c-gold { stroke: var(--accent-gold); }
+        .c-green { stroke: var(--eco-light); }
+        .c-mute { stroke: var(--accent-mute); }
+        .percentage { fill: #fff; font-family: 'Montserrat', sans-serif; font-size: 0.6rem; text-anchor: middle; font-weight: bold; }
+        @keyframes progress { 0% { stroke-dasharray: 0 100; } }
+        .metric-title { margin-top: 1rem; font-weight: 600; font-size: 0.9rem; color: var(--text-main); }
+        .metric-desc { font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem; }
+
         /* Value Map Infographic */
         .value-map { margin: 3rem 0; border-left: 2px solid var(--accent-gold); padding-left: 2rem; position: relative; }
         .map-node { position: relative; margin-bottom: 3rem; }
-        .map-node::before {
-            content: ''; position: absolute; left: -35px; top: 5px; width: 16px; height: 16px;
-            background: var(--accent-gold); border-radius: 50%; border: 4px solid var(--bg-deep);
-        }
+        .map-node::before { content: ''; position: absolute; left: -35px; top: 5px; width: 16px; height: 16px; background: var(--accent-gold); border-radius: 50%; border: 4px solid var(--bg-deep); }
         .map-title { color: var(--accent-gold); font-size: 1.3rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem; }
         .map-metric { background: rgba(212, 175, 55, 0.1); font-family: 'Montserrat', sans-serif; font-size: 0.8rem; padding: 4px 12px; border-radius: 20px; }
 
         /* Interactive Tabs */
         .tabs { margin-top: 3rem; }
         .tab-buttons { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
-        .tab-btn {
-            background: transparent; border: 1px solid rgba(212, 175, 55, 0.3); color: var(--text-main);
-            padding: 1rem 2rem; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 1rem;
-            transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; flex: 1; min-width: 200px;
-        }
+        .tab-btn { background: transparent; border: 1px solid rgba(212, 175, 55, 0.3); color: var(--text-main); padding: 1rem 2rem; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 1rem; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; flex: 1; min-width: 200px; }
         .tab-btn.active, .tab-btn:hover { background: var(--accent-gold); color: var(--bg-deep); font-weight: 600; }
         .tab-content { display: none; background: var(--bg-card); padding: 3rem; border-radius: 4px; animation: fadeIn 0.5s ease-in-out; }
         .tab-content.active { display: block; }
@@ -136,10 +165,7 @@
         /* Accordion */
         .accordion { margin-top: 3rem; }
         .accordion-item { border-bottom: 1px solid rgba(212, 175, 55, 0.2); margin-bottom: 1rem; }
-        .accordion-header {
-            padding: 1.5rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
-            font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--accent-gold);
-        }
+        .accordion-header { padding: 1.5rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--accent-gold); }
         .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; color: var(--text-dim); }
         .accordion-content p { padding-bottom: 1.5rem; }
 
@@ -153,6 +179,13 @@
             .stats-grid, .comparison-table { grid-template-columns: 1fr; }
             .comp-old { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
             .btn-print { top: 10px; right: 10px; padding: 8px 16px; font-size: 0.8rem; }
+            .ili-flow { flex-direction: column; gap: 2rem; }
+            .ili-flow::before { display: none; }
+            .ili-step { width: 100%; }
+            .habitat-wrapper { flex-direction: column; }
+            .gdhi-metrics { flex-direction: column; }
+            .metric-dial { width: 100%; margin-bottom: 2rem; }
+            .proprietary-container { padding: 2rem; }
         }
 
         /* --- PRINT STYLES --- */
@@ -170,7 +203,7 @@
             .accordion-header span { display: none !important; }
             
             /* Box Adjustments */
-            .insight-box, .value-card, .stat-card { background: #f9f9f9 !important; border: 1px solid #eee !important; box-shadow: none !important; page-break-inside: avoid; }
+            .insight-box, .value-card, .stat-card, .proprietary-container { background: #f9f9f9 !important; border: 1px solid #eee !important; box-shadow: none !important; page-break-inside: avoid; }
             .insight-box { border-left: 4px solid #d4af37 !important; }
             .insight-box::before { background: #ffffff !important; color: #000000 !important; font-weight: bold; }
             .stat-card { border-top: 3px solid #d4af37 !important; }
@@ -182,9 +215,18 @@
             .map-node::before { border-color: #ffffff !important; }
             .map-metric { background: #f0f0f0 !important; border: 1px solid #ccc !important; }
 
-            h1, h2, h3, h4, p, span, .comp-text, .stat-desc { color: #000000 !important; }
-            .dropcap, .lead-text, .comp-title { color: #444 !important; }
-            .stat-number, .map-title, .comp-new .comp-title, .value-card h3 { color: #b8972e !important; }
+            /* Proprietary Infographics Print Adjustments */
+            .ili-icon { background: #fff !important; color: #b8972e !important; box-shadow: none !important; border-color: #b8972e !important; }
+            .habitat-bird { background: #f0f8f5 !important; border-color: #5a7d6a !important; }
+            .layer-card { background: #f9f9f9 !important; border: 1px solid #eee !important; border-left: 4px solid #5a7d6a !important; }
+            .gdhi-header { border-bottom: 1px solid #ccc !important; }
+            .gdhi-score .num { color: #000 !important; }
+            .circle-bg { stroke: #eee !important; }
+            .percentage { fill: #000 !important; }
+
+            h1, h2, h3, h4, p, span, .comp-text, .stat-desc, .ili-desc, .metric-desc, .layer-card p { color: #000000 !important; }
+            .dropcap, .lead-text, .comp-title, .ili-title { color: #444 !important; }
+            .stat-number, .map-title, .comp-new .comp-title, .value-card h3, .gdhi-brand { color: #b8972e !important; }
             .signature { border-top: 1px solid #ccc !important; }
         }
     </style>
@@ -311,9 +353,124 @@
             </div>
         </section>
 
-        <!-- SECTION VI: SPATIAL VALUE MAP -->
+        <!-- SECTION VI: PROPRIETARY METHODOLOGIES (INTEGRATED INFOGRAPHICS) -->
         <section class="fade-in-section">
-            <h2>VI. Spatial Value Mapping</h2>
+            <h2>VI. Engineering The Experience</h2>
+            <p>To scale from basic hospitality to luxury legacy, aesthetic design must be backed by governed, measurable science. This is how Greenscape Designz engineers the environment.</p>
+
+            <!-- 1. ILI Framework -->
+            <div class="proprietary-container">
+                <h3 style="text-align: center; color: var(--text-main); font-family: 'Cinzel'; margin-bottom: 0.5rem; font-size: 1.8rem;">Integrated Landscape Intelligence™ (ILI™)</h3>
+                <p style="text-align: center; color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem;">Transforming landscape architecture into a measurable, auditable discipline.</p>
+                
+                <div class="ili-flow">
+                    <div class="ili-step">
+                        <div class="ili-icon">01</div>
+                        <div class="ili-title">Diagnostic Audit</div>
+                        <div class="ili-desc">Mapping existing topography, rainfall volume, and current constraints.</div>
+                    </div>
+                    <div class="ili-step">
+                        <div class="ili-icon">02</div>
+                        <div class="ili-title">Soft Engineering</div>
+                        <div class="ili-desc">Re-engineering hard drains into naturalized, surface-water ecological flows.</div>
+                    </div>
+                    <div class="ili-step">
+                        <div class="ili-icon">03</div>
+                        <div class="ili-title">Sensory Integration</div>
+                        <div class="ili-desc">Applying native canopies to choreograph micro-climates and acoustic boundaries.</div>
+                    </div>
+                    <div class="ili-step">
+                        <div class="ili-icon">04</div>
+                        <div class="ili-title">Yield Measurement</div>
+                        <div class="ili-desc">Tracking increased F&B dwell times and brand advocacy metrics.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Habitat Matrix -->
+            <div class="proprietary-container">
+                <h3 style="text-align: center; color: var(--text-main); font-family: 'Cinzel'; margin-bottom: 0.5rem; font-size: 1.8rem;">Ecological Dependencies</h3>
+                <p style="text-align: center; color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem;">Moving from ornamental decoration to native, layered biodiversity.</p>
+                
+                <div class="habitat-wrapper">
+                    <div class="habitat-bird">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+                            <path d="M12 2C8 2 4 5 4 10c0 4 3 8 8 12 5-4 8-8 8-12 0-5-4-8-8-8z"></path>
+                            <path d="M12 6v4"></path>
+                            <path d="M10 10h4"></path>
+                        </svg>
+                        <h3>Indian Roller</h3>
+                        <p>Coracias benghalensis</p>
+                        <p style="color: var(--text-main); font-size: 0.9rem; line-height: 1.5;">An indicator species of a healthy, multi-layered resort ecosystem. Impossible to attract with standard municipal horticulture.</p>
+                    </div>
+                    
+                    <div class="habitat-layers">
+                        <div class="layer-card">
+                            <h4>1. The Canopy Layer (Shade & Shelter)</h4>
+                            <p>Tall native trees providing thermal regulation for guest pool decks while serving as perching posts for indicator avian species.</p>
+                        </div>
+                        <div class="layer-card" style="border-left-color: var(--eco-green);">
+                            <h4>2. The Understory (Acoustic Masking)</h4>
+                            <p>Mid-level shrubs that absorb mechanical resort noise while providing nesting safety and foraging grounds.</p>
+                        </div>
+                        <div class="layer-card" style="border-left-color: var(--accent-mute);">
+                            <h4>3. The Ground Layer (Soil Retention)</h4>
+                            <p>Replacing concrete drains with water-retaining natural groundcover. Filters rainfall runoff and creates micro-habitats.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. GDHI Dashboard -->
+            <div class="proprietary-container">
+                <div class="gdhi-header">
+                    <div class="gdhi-brand">
+                        EmOL'scape™
+                        <span>Greenscape Designz Happiness Index (GDHI)</span>
+                    </div>
+                    <div class="gdhi-score">
+                        <div class="num" style="color: var(--accent-gold);">94%</div>
+                        <div style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px;">Target Premium Score</div>
+                    </div>
+                </div>
+
+                <div class="gdhi-metrics">
+                    <div class="metric-dial">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle c-gold" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">85%</text>
+                        </svg>
+                        <div class="metric-title">Thermal Comfort</div>
+                        <div class="metric-desc">Reduction of heat reflection via canopy shading, extending usable outdoor F&B hours.</div>
+                    </div>
+
+                    <div class="metric-dial">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle c-green" stroke-dasharray="92, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">92%</text>
+                        </svg>
+                        <div class="metric-title">Auditory Masking</div>
+                        <div class="metric-desc">Strategic placement of naturalized waterways to drown out operational resort noise.</div>
+                    </div>
+
+                    <div class="metric-dial">
+                        <svg viewBox="0 0 36 36" class="circular-chart">
+                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <path class="circle c-mute" stroke-dasharray="78, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            <text x="18" y="20.35" class="percentage">78%</text>
+                        </svg>
+                        <div class="metric-title">Biophilic Engagement</div>
+                        <div class="metric-desc">Guest interaction rate with ecological focal points vs. transit-only behavior.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION VII: SPATIAL VALUE MAP -->
+        <section class="fade-in-section">
+            <h2>VII. Spatial Value Mapping</h2>
             <p>Where does Greenscape Designz intervene? We execute surgical, high-impact interventions in zones that dictate the guest's perception of value.</p>
 
             <div class="value-map">
@@ -335,12 +492,12 @@
             </div>
         </section>
 
-        <!-- SECTION VII: CONTAINERIZED ENGAGEMENT (TABS) -->
+        <!-- SECTION VIII: CONTAINERIZED ENGAGEMENT (TABS) -->
         <section class="fade-in-section">
-            <h2>VII. The Containerized Engagement Model</h2>
+            <h2>VIII. The Containerized Engagement Model</h2>
             <p>Greenscape Designz offers a structured, scalable partnership. This model is designed to support your existing team, bringing specialized experiential expertise exactly where and when you need it.</p>
 
-           <div class="tabs">
+            <div class="tabs">
                 <div class="tab-buttons">
                     <button class="tab-btn active" onclick="openTab(event, 'tier1')">Tier I: Strategic Advisory</button>
                     <button class="tab-btn" onclick="openTab(event, 'tier2')">Tier II: Targeted Experience</button>
@@ -396,9 +553,10 @@
                 </div>
             </div>
         </section>
- <!-- SECTION VIII: THE VISIONARY'S AUDIT (ACCORDIONS) -->
+
+        <!-- SECTION IX: THE VISIONARY'S AUDIT (ACCORDIONS) -->
         <section class="fade-in-section">
-            <h2>VIII. The Visionary's Audit</h2>
+            <h2>IX. The Visionary's Audit</h2>
             <p>As you reflect on the incredible legacy you are building, consider these strategic prompts before we discuss any tactical additions:</p>
 
             <div class="accordion">
@@ -440,6 +598,7 @@
                 </div>
             </div>
         </section>
+
         <div class="signature fade-in-section">
             <h3 style="color: var(--accent-gold); font-size: 1.5rem; margin-bottom: 0.5rem;">Anirban Pal</h3>
             <p style="color: var(--text-main); font-weight: 500; letter-spacing: 1px;">PRINCIPAL LANDSCAPE ARCHITECT</p>
