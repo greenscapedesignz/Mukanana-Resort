@@ -8,11 +8,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap');
 
         :root {
-            --bg-deep: #0a120d; /* Very dark forest */
+            --bg-deep: #0a120d; 
             --bg-card: #132218;
             --accent-gold: #d4af37;
             --accent-mute: #9c8435;
-            --text-main: #f4f1ea; /* Parchment */
+            --text-main: #f4f1ea; 
             --text-dim: #a8a9a6;
         }
 
@@ -35,11 +35,38 @@
             font-weight: 400;
         }
 
-        /* Layout & Containers */
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 4rem 2rem;
+        }
+
+        /* Print Button */
+        .btn-print {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: var(--accent-gold);
+            color: var(--bg-deep);
+            border: none;
+            padding: 12px 24px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-print:hover {
+            background: #e8c659;
+            transform: translateY(-2px);
         }
 
         .fade-in-section {
@@ -89,7 +116,7 @@
             max-width: 600px;
         }
 
-        /* Typography Enhancements */
+        /* Typography */
         .dropcap {
             float: left;
             font-size: 4.5rem;
@@ -107,7 +134,7 @@
             margin-bottom: 2rem;
         }
 
-        /* Highlight Boxes & Callouts */
+        /* Insight Boxes */
         .insight-box {
             background-color: var(--bg-card);
             border-left: 4px solid var(--accent-gold);
@@ -129,34 +156,48 @@
             letter-spacing: 2px;
         }
 
-        /* Comparison Grid */
-        .comparison-grid {
+        /* Grid */
+        .value-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 2rem;
             margin: 3rem 0;
         }
 
-        .comp-card {
+        .value-card {
             background: var(--bg-card);
             padding: 2.5rem;
             border-radius: 4px;
-            border-top: 2px solid transparent;
+            border-left: 2px solid transparent;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
-        .comp-card:hover {
-            border-top: 2px solid var(--accent-gold);
-            transform: translateY(-5px);
+        .value-card:hover {
+            border-left: 2px solid var(--accent-gold);
+            transform: translateX(5px);
         }
 
-        .comp-card h3 {
+        .value-card h3 {
             color: var(--accent-gold);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        /* Interactive Tabs for Services */
+        .value-card h3 span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* Interactive Tabs */
         .tabs {
             margin-top: 4rem;
         }
@@ -234,7 +275,8 @@
             margin-top: 6rem;
             text-align: center;
             padding-top: 3rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 3rem;
         }
 
         @keyframes fadeIn {
@@ -244,104 +286,194 @@
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
-            .comparison-grid { grid-template-columns: 1fr; }
+            .btn-print { top: 10px; right: 10px; padding: 8px 16px; font-size: 0.8rem; }
+        }
+
+        /* =========================================
+           PRINT STYLES: Converts to clean white document
+           ========================================= */
+        @media print {
+            body {
+                background-color: #ffffff !important;
+                color: #222222 !important;
+            }
+
+            .btn-print {
+                display: none !important; /* Hide button on print */
+            }
+
+            .hero {
+                height: auto !important;
+                background: none !important;
+                border-bottom: 2px solid #d4af37 !important;
+                padding: 4rem 0 2rem 0 !important;
+            }
+
+            .hero h1, .hero p, .hero h4 {
+                color: #000000 !important;
+            }
+
+            .fade-in-section {
+                opacity: 1 !important;
+                transform: none !important;
+                margin-bottom: 3rem !important;
+                page-break-inside: avoid;
+            }
+
+            .container {
+                padding: 0 1rem !important;
+            }
+
+            /* Expand Interactive Elements for Print */
+            .tab-buttons { display: none !important; }
+            .tab-content {
+                display: block !important;
+                background: transparent !important;
+                padding: 1rem 0 !important;
+                border-bottom: 1px dashed #ccc !important;
+                opacity: 1 !important;
+            }
+            .tab-content h3 { color: #000 !important; }
+
+            .accordion-content {
+                max-height: none !important;
+                display: block !important;
+                color: #333 !important;
+            }
+            .accordion-header span { display: none !important; } /* Hide the +/- symbol */
+
+            /* Boxes & Cards */
+            .insight-box, .value-card {
+                background: #f9f9f9 !important;
+                border-left: 4px solid #d4af37 !important;
+                color: #222 !important;
+                page-break-inside: avoid;
+                box-shadow: none !important;
+            }
+
+            .insight-box::before {
+                background: #ffffff !important;
+                color: #000000 !important;
+                font-weight: bold;
+            }
+
+            h1, h2, h3, h4, p, span {
+                color: #000000 !important;
+            }
+            
+            .dropcap, .lead-text, .accordion-header {
+                color: #444 !important;
+            }
+
+            .value-card h3 span {
+                background: #eee !important;
+                border: 1px solid #ccc !important;
+            }
+
+            .signature {
+                border-top: 1px solid #ccc !important;
+                border-bottom: none !important;
+                page-break-inside: avoid;
+            }
         }
     </style>
 </head>
 <body>
 
+    <button class="btn-print" onclick="window.print()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Print Document
+    </button>
+
     <section class="hero">
         <h4>Greenscape Designz | Strategic Brief</h4>
         <h1>The Architecture<br>of Experience</h1>
-        <p>A transformational roadmap for Mookanana Resort to evolve from infrastructural excellence to an internationally benchmarked luxury destination.</p>
+        <p>A transformational roadmap for Mookanana Resort to evolve from infrastructural excellence to an internationally benchmarked luxury legacy.</p>
     </section>
 
     <div class="container">
 
-        <!-- SECTION 1: VALIDATION & THE GAP -->
+        <!-- SECTION 1: VALIDATION & THE LEGACY -->
         <section class="fade-in-section">
             <h2>I. The Crucible of Creation</h2>
-            <p class="lead-text">From a 2005 land acquisition to a sprawling 40-acre estate hosting 1,000 guests monthly—your journey is an undisputed engineering triumph.</p>
-            <p><span class="dropcap">T</span>o plant a forest, sculpt the earth, and successfully weather the devastation of a global pandemic requires a rare combination of structural intelligence and sheer will. As an irrigation expert, you have mastered the physical land. You have engineered waterways, curated horticulture, and built an infrastructure that functions flawlessly. </p>
-            <p>But we have reached a critical inflection point. The systems that brought Mookanana to ₹10,000-a-night stability are not the same systems that will elevate it to a ₹25,000-a-night luxury destination. Right now, the resort is designed as <em>Infrastructure</em>. To scale revenue, it must be reimagined as <em>Experience</em>.</p>
+            <p class="lead-text">From a pristine 2005 land acquisition to a sprawling 40-acre estate hosting over 1,000 guests monthly—your journey is an undisputed triumph of vision and execution.</p>
+            <p><span class="dropcap">T</span>o manifest a sanctuary from the earth, engineer its lifeblood, and successfully scale it to 30 guests a day requires a rare combination of grit, intuition, and structural mastery. You have built a formidable foundation. Mookanana is stable, highly rated, and structurally sound. You have successfully conquered the most difficult phase of development: making the land work.</p>
+            <p>Now, we look to the horizon. The foundation is set for generational continuity. The next evolution of Mookanana is not about fixing what is broken—it is about elevating a magnificent canvas into an ultra-premium, legacy hospitality brand. It is about evolving from infrastructural excellence to <em>Experiential Luxury</em>.</p>
             
             <div class="insight-box">
-                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">The 4.6-Star Paradox & The Silent Majority</h3>
-                <p>2,600 guests have left glowing reviews, primarily validating the functional delivery of good food and quality fixtures. But what of the estimated 11,000 guests who left without comment? In the luxury tier, silence is a metric. A mid-tier resort satisfies its guests; a premium resort creates absolute, undeniable brand advocacy. It generates FOMO (Fear Of Missing Out) for those who have not yet arrived.</p>
+                <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">The Opportunity of the Silent Majority</h3>
+                <p>2,600 guests have left glowing reviews, validating your impeccable execution of rooms, food, and foundational comfort. But consider the incredible potential within the 11,000 guests who visited without leaving a review. In the ultra-premium hospitality tier, our goal is to create absolute, undeniable brand advocacy. We want to design environments so breathtaking that every guest feels compelled to share their story, generating a powerful cycle of desire and FOMO (Fear Of Missing Out) for future travelers.</p>
             </div>
         </section>
 
-        <!-- SECTION 2: THE GENERATIONAL BRIDGE & PARADIGM SHIFT -->
+        <!-- SECTION 2: BRAND CREATION -->
         <section class="fade-in-section">
-            <h2>II. The Generational Paradigm</h2>
-            <p>You have laid a generational foundation. Now, we must look at the asset through the lens of modern hospitality economics—a language your son, with his London MBA in Finance and civil engineering background, inherently understands.</p>
-            <p>Every square foot of Mookanana must be audited for its Return on Investment (ROI). Currently, the benchmark inspirations for the property are legacy public spaces like Lalbagh or Ooty Gardens. These are magnificent civic assets, built with a colonial top-down mindset: <em>they are designed to be looked at.</em></p>
-            <p>Modern affluent travelers do not pay ₹25,000 a night to look at municipal-style gardens. They pay to be psychologically transported.</p>
-
-            <div class="comparison-grid">
-                <div class="comp-card">
-                    <h3>The Horticultural Mindset</h3>
-                    <p style="color: var(--text-dim);"><em>(The Current Trajectory)</em></p>
-                    <ul style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-dim);">
-                        <li>Focuses on the health and arrangement of individual plants.</li>
-                        <li>Uses impermeable hardscapes to force water away quickly.</li>
-                        <li>Creates beautiful scenes to be viewed from a distance.</li>
-                        <li>Views the landscape as a maintenance expense.</li>
-                    </ul>
-                </div>
-                <div class="comp-card" style="background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.2);">
-                    <h3>Experiential Landscape Architecture</h3>
-                    <p style="color: var(--accent-mute);"><em>(The Greenscape Vision)</em></p>
-                    <ul style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-main);">
-                        <li>Focuses on the <strong>guest's psychological reaction</strong> to the environment.</li>
-                        <li>Engineers micro-climates (shade, wind) so guests spend more time outside, directly increasing F&B revenue.</li>
-                        <li>Creates immersive "Sensory Choreography" where guests interact with the land.</li>
-                        <li>Views the landscape as a <strong>revenue-generating asset</strong>.</li>
-                    </ul>
-                </div>
-            </div>
+            <h2>II. The Evolution of Legacy</h2>
+            <p>To ensure generational continuity, we must view the estate through the lens of modern luxury brand building. A name that beautifully translates to "Move towards the forest" holds immense narrative power. The goal is to make every square inch of the property reflect that deep, resonant promise.</p>
+            <p>You have already created a robust structural infrastructure and vibrant horticultural elements. The next tier of hospitality seamlessly weaves these elements together to create a cohesive psychological journey for the guest. When affluent travelers invest ₹25,000+ a night, they are purchasing more than a beautiful room and a scenic view; they are purchasing an immersive emotional escape.</p>
         </section>
 
-        <!-- SECTION 3: THE TIRUPATI ROI MODEL -->
+        <!-- SECTION 3: THE LANDSCAPE MULTIPLIER -->
         <section class="fade-in-section">
-            <h2>III. Value Creation & Capital Optimization</h2>
-            <p>A resort name that means "Move towards the forest" cannot feel like a manicured city park. It must feel like a curated, accessible wilderness. This is where my expertise as a Principal Landscape Architect acts as a multiplier to your existing team.</p>
-            
-            <div class="insight-box" style="border-left-color: #5a7d6a;">
-                <h3 style="color: #5a7d6a; margin-bottom: 1rem;">Case Application: The ROI of Ecological Luxury</h3>
-                <p>In a recent strategic intervention in Tirupati, we demonstrated how experiential design directly impacts the bottom line. By transitioning from high-maintenance ornamental setups to native, climate-adaptive planting and intelligent ground recharge systems, we drastically reduced monthly maintenance overhead. Furthermore, optimizing spatial flow (such as parking redesign) reduced operational friction. </p>
-                <p>Applied to Mookanana, this means using soft engineering to manage your high rainfall—creating beautiful, naturalized waterways rather than harsh, impermeable drains that destroy the ground-layer vegetation. We lower your maintenance costs while dramatically raising the perceived aesthetic value.</p>
+            <h2>III. The Landscape Multiplier: Elevating to Premium</h2>
+            <p>Experiential Landscape Architecture is the vital bridge between a beautifully engineered property and a world-class luxury destination. Here is how strategic design unlocks premium valuation:</p>
+
+            <div class="value-grid">
+                <div class="value-card">
+                    <h3><span>WHY</span> The Psychology of Value</h3>
+                    <p>Infrastructure provides comfort, but landscape provides emotion. Premium pricing is commanded by emotional resonance. By curating the micro-climates, shadows, sounds, and textures of the environment, we increase the guest's perceived value of their stay. The longer a guest comfortably dwells in your outdoor spaces, the deeper their connection to your brand, and the higher their ancillary spending (F&B, amenities).</p>
+                </div>
+                
+                <div class="value-card">
+                    <h3><span>WHAT</span> Sensory Choreography</h3>
+                    <p>It is the transition from ornamental decoration to immersive ecosystems. We design "Sensory Choreography"—ensuring that the temperature drops naturally as guests enter shaded canopies, that the sound of your magnificent water bodies guides their pathways, and that native, climate-responsive flora creates an authentic, grounded connection to the Western Ghats.</p>
+                </div>
+
+                <div class="value-card">
+                    <h3><span>WHERE</span> High-Friction to High-Impact</h3>
+                    <p>We do not need to alter everything; we intervene strategically in zones of high emotional impact. This means reimagining the arrival threshold (the reception) so it feels like stepping directly into the forest. It means curating the pool deck with intelligent shading to make it a luxurious all-day oasis. It means softening the edges where your grand architecture meets the natural wild.</p>
+                </div>
+
+                <div class="value-card">
+                    <h3><span>HOW</span> Seamless Integration</h3>
+                    <p>We work <em>with</em> your existing infrastructure. My role as a Landscape Architect is to act as a multiplier to your current horticultural and engineering successes. We introduce soft engineering, narrative placemaking, and native biodiversity layers that elegantly drape over your existing hardscapes, enhancing them without requiring disruptive demolition.</p>
+                </div>
+
+                <div class="value-card">
+                    <h3><span>HOW MUCH</span> Containerized Value Creation</h3>
+                    <p>Strategic elevation is not an unquantifiable expense; it is a measurable investment. We scale the intervention to match your comfort and cash flow, utilizing phased rollouts. From high-level advisory insights to targeted spatial redesigns, the investment is tightly containerized to ensure maximum visual and experiential ROI at every step.</p>
+                </div>
             </div>
         </section>
 
         <!-- SECTION 4: THE ENGAGEMENT TIERS -->
         <section class="fade-in-section">
             <h2>IV. The Containerized Engagement Model</h2>
-            <p>We do not need to tear down what you have built; we need to curate and elevate it. Greenscape Designz offers a structured, scalable approach to transformation, designed to manage cash flow through predictable monthly retainers while delivering phased ROI.</p>
+            <p>Greenscape Designz offers a structured, scalable partnership. This model is designed to support your existing team, bringing specialized experiential expertise exactly where and when you need it.</p>
 
             <div class="tabs">
                 <div class="tab-buttons">
-                    <button class="tab-btn active" onclick="openTab(event, 'tier1')">Tier I: The Strategic Compass</button>
+                    <button class="tab-btn active" onclick="openTab(event, 'tier1')">Tier I: Strategic Advisory</button>
                     <button class="tab-btn" onclick="openTab(event, 'tier2')">Tier II: Targeted Experience</button>
                     <button class="tab-btn" onclick="openTab(event, 'tier3')">Tier III: Master-Narrative</button>
                 </div>
 
                 <div id="tier1" class="tab-content active">
                     <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">On-Call Strategic Advisory</h3>
-                    <p><strong>The Objective:</strong> Immediate directional correction and advocacy.</p>
-                    <p>I act as your retained external Landscape Architect and Business Consultant. I provide the critical "lens" missing from the current team. I will review ongoing site decisions, guide the implementation of your horticultural team, and ensure every structural decision aligns with the ₹25k luxury vision, preventing costly missteps in aesthetic judgment.</p>
+                    <p><strong>The Objective:</strong> Directional alignment and design advocacy.</p>
+                    <p>I act as your retained external Landscape Architect and Brand Strategist. I act as a sounding board and multiplier for your team, reviewing ongoing site developments and ensuring that every new addition inherently aligns with the ultimate luxury vision of the brand.</p>
                 </div>
 
                 <div id="tier2" class="tab-content">
                     <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Targeted Spatial Interventions</h3>
-                    <p><strong>The Objective:</strong> High-impact, surgical design for specific friction points.</p>
-                    <p>We design specific "Experience Centers" without disrupting overall operations. For example: Transforming the reception from a transactional desk into an immersive forest threshold. Designing the hot, unshaded pool deck into a curated micro-climate that encourages prolonged dwelling. We turn dead transit zones into revenue-generating spaces.</p>
+                    <p><strong>The Objective:</strong> High-impact, surgical design for distinct zones.</p>
+                    <p>We craft specific "Experience Centers" that instantly elevate the property’s prestige. Whether it is redesigning the reception into a welcoming forest sanctuary or curating the landscape around the new coffee shop, we deliver focused, awe-inspiring design packages that integrate smoothly into current operations.</p>
                 </div>
 
                 <div id="tier3" class="tab-content">
                     <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">Multi-Dimensional Brand & Experience Curation</h3>
-                    <p><strong>The Objective:</strong> Total category elevation.</p>
-                    <p>A comprehensive re-imagining of the Mookanana master narrative. We integrate your masterful water engineering with deep sensory design, aligning the physical landscape, the brand identity, and the user journey into one seamless, ultra-premium product. This is the blueprint for generational scaling.</p>
+                    <p><strong>The Objective:</strong> Holistic category elevation.</p>
+                    <p>A comprehensive re-imagining of the Mookanana master landscape narrative. We weave your structural achievements and our deep sensory design into a single, seamless, ultra-premium environment. This is the ultimate blueprint for establishing a multi-generational hospitality landmark.</p>
                 </div>
             </div>
         </section>
@@ -349,34 +481,34 @@
         <!-- SECTION 5: INTELLIGENT QUESTIONS -->
         <section class="fade-in-section">
             <h2>V. The Visionary's Audit</h2>
-            <p>Before we discuss the tactical design of a wardrobe or a kiosk, we must align on the macro-vision. Consider these prompts:</p>
+            <p>As you reflect on the incredible legacy you are building, consider these strategic prompts:</p>
 
             <div class="accordion">
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
-                        1. User Persona vs. Owner Preference
+                        1. The Modern Luxury Persona
                         <span style="font-size: 1.5rem;">+</span>
                     </div>
                     <div class="accordion-content">
-                        <p>We have built the resort based on what you, as the creator, felt was best. But who is the actual user? What is the specific demographic of a traveler spending ₹15,000+ per night, arriving in a luxury vehicle? What are their sensory expectations, and how does Mookanana currently fail to meet them?</p>
+                        <p>Who is the ultra-premium traveler we are inviting to Mookanana tomorrow? When a guest arrives seeking a ₹20,000+ experience, what are the specific sensory details, spatial comforts, and emotional triggers they expect from a world-class forest retreat?</p>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
-                        2. The Definition of a Benchmark
+                        2. The Next Benchmark
                         <span style="font-size: 1.5rem;">+</span>
                     </div>
                     <div class="accordion-content">
-                        <p>If Lalbagh is the benchmark for government infrastructure, what is the benchmark for your family's hospitality legacy? Are we building a garden, or are we building a sanctuary that commands absolute brand loyalty?</p>
+                        <p>You have successfully conquered your initial goals. As you look toward establishing a lasting family brand, what is the new standard of excellence? How do we ensure Mookanana doesn't just participate in the hospitality market, but actively redefines luxury in the region?</p>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <div class="accordion-header" onclick="toggleAccordion(this)">
-                        3. The Danger of the "Finished" Product
+                        3. The Infinite Canvas of Legacy
                         <span style="font-size: 1.5rem;">+</span>
                     </div>
                     <div class="accordion-content">
-                        <p>A glass that is already full cannot take in new water. If we continue to execute the current playbook, we will maximize out at current revenues. Are we prepared to open the aperture, invite specialized expertise, and allow Mookanana to become what it was always destined to be?</p>
+                        <p>A masterpiece is built in layers. You have flawlessly laid the foundation and the structure. Are you ready to invite specialized experiential curation to apply the final, brilliant layer that transforms a great resort into an unforgettable legacy?</p>
                     </div>
                 </div>
             </div>
