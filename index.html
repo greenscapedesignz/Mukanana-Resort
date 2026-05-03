@@ -14,13 +14,10 @@
             --accent-mute: #9c8435;
             --text-main: #f4f1ea; 
             --text-dim: #a8a9a6;
+            --chart-bg: #1a2f24;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: var(--bg-deep);
@@ -30,351 +27,165 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Cinzel', serif;
-            font-weight: 400;
-        }
+        h1, h2, h3, h4 { font-family: 'Cinzel', serif; font-weight: 400; }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; }
 
         /* Print Button */
         .btn-print {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background: var(--accent-gold);
-            color: var(--bg-deep);
-            border: none;
-            padding: 12px 24px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            border-radius: 4px;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            position: fixed; top: 30px; right: 30px;
+            background: var(--accent-gold); color: var(--bg-deep);
+            border: none; padding: 12px 24px;
+            font-family: 'Montserrat', sans-serif; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px;
+            cursor: pointer; border-radius: 4px; z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: all 0.3s ease;
+            display: flex; align-items: center; gap: 10px;
         }
-
-        .btn-print:hover {
-            background: #e8c659;
-            transform: translateY(-2px);
-        }
+        .btn-print:hover { background: #e8c659; transform: translateY(-2px); }
 
         .fade-in-section {
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 0; transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-            will-change: opacity, visibility;
-            margin-bottom: 6rem;
+            will-change: opacity, visibility; margin-bottom: 5rem;
         }
-
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: none;
-        }
+        .fade-in-section.is-visible { opacity: 1; transform: none; }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
             background: radial-gradient(circle at center, #132218 0%, #0a120d 100%);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding: 2rem;
         }
+        .hero h4 { color: var(--accent-gold); letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 1rem; }
+        .hero h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 2rem; color: var(--text-main); }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 600px; }
 
-        .hero h4 {
-            color: var(--accent-gold);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            color: var(--text-main);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            max-width: 600px;
-        }
-
-        /* Typography */
-        .dropcap {
-            float: left;
-            font-size: 4.5rem;
-            line-height: 3.5rem;
-            padding-right: 1.2rem;
-            padding-top: 0.3rem;
-            font-family: 'Cinzel', serif;
-            color: var(--accent-gold);
-        }
-
-        .lead-text {
-            font-size: 1.3rem;
-            color: var(--accent-mute);
-            font-weight: 500;
-            margin-bottom: 2rem;
-        }
+        .dropcap { float: left; font-size: 4.5rem; line-height: 3.5rem; padding-right: 1.2rem; padding-top: 0.3rem; font-family: 'Cinzel', serif; color: var(--accent-gold); }
+        .lead-text { font-size: 1.3rem; color: var(--accent-mute); font-weight: 500; margin-bottom: 2rem; }
 
         /* Insight Boxes */
         .insight-box {
-            background-color: var(--bg-card);
-            border-left: 4px solid var(--accent-gold);
-            padding: 3rem;
-            margin: 3rem 0;
-            position: relative;
+            background-color: var(--bg-card); border-left: 4px solid var(--accent-gold);
+            padding: 3rem; margin: 3rem 0; position: relative;
         }
-
         .insight-box::before {
-            content: "Strategic Insight";
-            position: absolute;
-            top: -12px;
-            left: 20px;
-            background: var(--bg-deep);
-            color: var(--accent-gold);
-            padding: 0 10px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            content: "Strategic Insight"; position: absolute; top: -12px; left: 20px;
+            background: var(--bg-deep); color: var(--accent-gold); padding: 0 10px;
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;
         }
 
-        /* Grid */
-        .value-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin: 3rem 0;
+        /* Stats Infographic */
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 3rem 0; }
+        .stat-card {
+            background: var(--bg-card); padding: 2rem; text-align: center;
+            border-top: 3px solid var(--accent-gold); border-radius: 4px;
         }
+        .stat-number { font-family: 'Cinzel', serif; font-size: 3rem; color: var(--accent-gold); line-height: 1; margin-bottom: 0.5rem; }
+        .stat-title { font-weight: 600; font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.5rem; }
+        .stat-desc { font-size: 0.85rem; color: var(--text-dim); line-height: 1.4; }
 
-        .value-card {
-            background: var(--bg-card);
-            padding: 2.5rem;
-            border-radius: 4px;
-            border-left: 2px solid transparent;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
+        /* Comparison Infographic */
+        .comparison-table {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 3rem 0;
+            border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
+        .comp-col { padding: 3rem 2rem; }
+        .comp-old { background: #1a221d; border-right: 1px solid rgba(255,255,255,0.05); }
+        .comp-new { background: var(--chart-bg); }
+        .comp-col h3 { text-align: center; margin-bottom: 2rem; font-size: 1.3rem; }
+        .comp-old h3 { color: #888; }
+        .comp-new h3 { color: var(--accent-gold); }
+        .comp-item { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .comp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .comp-title { font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
+        .comp-old .comp-title { color: #888; }
+        .comp-new .comp-title { color: var(--accent-gold); }
+        .comp-text { font-size: 0.9rem; color: var(--text-dim); }
 
-        .value-card:hover {
-            border-left: 2px solid var(--accent-gold);
-            transform: translateX(5px);
-        }
+        /* Value Grid */
+        .value-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin: 3rem 0; }
+        .value-card { background: var(--bg-card); padding: 2rem; border-radius: 4px; border-left: 2px solid transparent; transition: all 0.3s ease; }
+        .value-card:hover { border-left: 2px solid var(--accent-gold); transform: translateX(5px); }
+        .value-card h3 { color: var(--accent-gold); margin-bottom: 1rem; font-size: 1.2rem; display: flex; align-items: center; gap: 1rem; }
+        .value-card h3 span { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; background: rgba(212, 175, 55, 0.1); padding: 4px 10px; border-radius: 20px; letter-spacing: 1px; }
 
-        .value-card h3 {
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        /* Value Map Infographic */
+        .value-map { margin: 3rem 0; border-left: 2px solid var(--accent-gold); padding-left: 2rem; position: relative; }
+        .map-node { position: relative; margin-bottom: 3rem; }
+        .map-node::before {
+            content: ''; position: absolute; left: -35px; top: 5px; width: 16px; height: 16px;
+            background: var(--accent-gold); border-radius: 50%; border: 4px solid var(--bg-deep);
         }
-
-        .value-card h3 span {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            background: rgba(212, 175, 55, 0.1);
-            padding: 4px 10px;
-            border-radius: 20px;
-            letter-spacing: 1px;
-        }
+        .map-title { color: var(--accent-gold); font-size: 1.3rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 1rem; }
+        .map-metric { background: rgba(212, 175, 55, 0.1); font-family: 'Montserrat', sans-serif; font-size: 0.8rem; padding: 4px 12px; border-radius: 20px; }
 
         /* Interactive Tabs */
-        .tabs {
-            margin-top: 4rem;
-        }
-
-        .tab-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
+        .tabs { margin-top: 3rem; }
+        .tab-buttons { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
         .tab-btn {
-            background: transparent;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: var(--text-main);
-            padding: 1rem 2rem;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            flex: 1;
-            min-width: 200px;
+            background: transparent; border: 1px solid rgba(212, 175, 55, 0.3); color: var(--text-main);
+            padding: 1rem 2rem; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 1rem;
+            transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; flex: 1; min-width: 200px;
         }
-
-        .tab-btn.active, .tab-btn:hover {
-            background: var(--accent-gold);
-            color: var(--bg-deep);
-            font-weight: 600;
-        }
-
-        .tab-content {
-            display: none;
-            background: var(--bg-card);
-            padding: 3rem;
-            border-radius: 4px;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
+        .tab-btn.active, .tab-btn:hover { background: var(--accent-gold); color: var(--bg-deep); font-weight: 600; }
+        .tab-content { display: none; background: var(--bg-card); padding: 3rem; border-radius: 4px; animation: fadeIn 0.5s ease-in-out; }
+        .tab-content.active { display: block; }
 
         /* Accordion */
-        .accordion-item {
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            margin-bottom: 1rem;
-        }
-
+        .accordion { margin-top: 3rem; }
+        .accordion-item { border-bottom: 1px solid rgba(212, 175, 55, 0.2); margin-bottom: 1rem; }
         .accordion-header {
-            padding: 1.5rem 0;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: 'Cinzel', serif;
-            font-size: 1.3rem;
-            color: var(--accent-gold);
+            padding: 1.5rem 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+            font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--accent-gold);
         }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out;
-            color: var(--text-dim);
-        }
-
-        .accordion-content p {
-            padding-bottom: 1.5rem;
-        }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; color: var(--text-dim); }
+        .accordion-content p { padding-bottom: 1.5rem; }
 
         /* Signature */
-        .signature {
-            margin-top: 6rem;
-            text-align: center;
-            padding-top: 3rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 3rem;
-        }
+        .signature { margin-top: 5rem; text-align: center; padding-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
+            .stats-grid, .comparison-table { grid-template-columns: 1fr; }
+            .comp-old { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
             .btn-print { top: 10px; right: 10px; padding: 8px 16px; font-size: 0.8rem; }
         }
 
-        /* =========================================
-           PRINT STYLES: Converts to clean white document
-           ========================================= */
+        /* --- PRINT STYLES --- */
         @media print {
-            body {
-                background-color: #ffffff !important;
-                color: #222222 !important;
-            }
-
-            .btn-print {
-                display: none !important; /* Hide button on print */
-            }
-
-            .hero {
-                height: auto !important;
-                background: none !important;
-                border-bottom: 2px solid #d4af37 !important;
-                padding: 4rem 0 2rem 0 !important;
-            }
-
-            .hero h1, .hero p, .hero h4 {
-                color: #000000 !important;
-            }
-
-            .fade-in-section {
-                opacity: 1 !important;
-                transform: none !important;
-                margin-bottom: 3rem !important;
-                page-break-inside: avoid;
-            }
-
-            .container {
-                padding: 0 1rem !important;
-            }
-
-            /* Expand Interactive Elements for Print */
-            .tab-buttons { display: none !important; }
-            .tab-content {
-                display: block !important;
-                background: transparent !important;
-                padding: 1rem 0 !important;
-                border-bottom: 1px dashed #ccc !important;
-                opacity: 1 !important;
-            }
-            .tab-content h3 { color: #000 !important; }
-
-            .accordion-content {
-                max-height: none !important;
-                display: block !important;
-                color: #333 !important;
-            }
-            .accordion-header span { display: none !important; } /* Hide the +/- symbol */
-
-            /* Boxes & Cards */
-            .insight-box, .value-card {
-                background: #f9f9f9 !important;
-                border-left: 4px solid #d4af37 !important;
-                color: #222 !important;
-                page-break-inside: avoid;
-                box-shadow: none !important;
-            }
-
-            .insight-box::before {
-                background: #ffffff !important;
-                color: #000000 !important;
-                font-weight: bold;
-            }
-
-            h1, h2, h3, h4, p, span {
-                color: #000000 !important;
-            }
+            body { background-color: #ffffff !important; color: #222222 !important; }
+            .btn-print { display: none !important; }
+            .hero { height: auto !important; background: none !important; border-bottom: 2px solid #d4af37 !important; padding: 4rem 0 2rem 0 !important; }
+            .hero h1, .hero p, .hero h4 { color: #000000 !important; }
+            .fade-in-section { opacity: 1 !important; transform: none !important; margin-bottom: 3rem !important; page-break-inside: avoid; }
             
-            .dropcap, .lead-text, .accordion-header {
-                color: #444 !important;
-            }
+            /* Expand Elements */
+            .tab-buttons { display: none !important; }
+            .tab-content { display: block !important; background: transparent !important; padding: 1rem 0 !important; border-bottom: 1px dashed #ccc !important; opacity: 1 !important; page-break-inside: avoid; }
+            .accordion-content { max-height: none !important; display: block !important; color: #333 !important; }
+            .accordion-header span { display: none !important; }
+            
+            /* Box Adjustments */
+            .insight-box, .value-card, .stat-card { background: #f9f9f9 !important; border: 1px solid #eee !important; box-shadow: none !important; page-break-inside: avoid; }
+            .insight-box { border-left: 4px solid #d4af37 !important; }
+            .insight-box::before { background: #ffffff !important; color: #000000 !important; font-weight: bold; }
+            .stat-card { border-top: 3px solid #d4af37 !important; }
+            .comparison-table { box-shadow: none !important; border: 1px solid #ccc !important; page-break-inside: avoid; }
+            .comp-old { background: #f5f5f5 !important; border-right: 1px solid #ccc !important; }
+            .comp-new { background: #ffffff !important; }
+            .comp-old h3 { color: #555 !important; }
+            .comp-item { border-bottom: 1px solid #ddd !important; }
+            .map-node::before { border-color: #ffffff !important; }
+            .map-metric { background: #f0f0f0 !important; border: 1px solid #ccc !important; }
 
-            .value-card h3 span {
-                background: #eee !important;
-                border: 1px solid #ccc !important;
-            }
-
-            .signature {
-                border-top: 1px solid #ccc !important;
-                border-bottom: none !important;
-                page-break-inside: avoid;
-            }
+            h1, h2, h3, h4, p, span, .comp-text, .stat-desc { color: #000000 !important; }
+            .dropcap, .lead-text, .comp-title { color: #444 !important; }
+            .stat-number, .map-title, .comp-new .comp-title, .value-card h3 { color: #b8972e !important; }
+            .signature { border-top: 1px solid #ccc !important; }
         }
     </style>
 </head>
@@ -393,7 +204,7 @@
 
     <div class="container">
 
-        <!-- SECTION 1: VALIDATION & THE LEGACY -->
+        <!-- SECTION I: THE CRUCIBLE -->
         <section class="fade-in-section">
             <h2>I. The Crucible of Creation</h2>
             <p class="lead-text">From a pristine 2005 land acquisition to a sprawling 40-acre estate hosting over 1,000 guests monthly—your journey is an undisputed triumph of vision and execution.</p>
@@ -406,49 +217,127 @@
             </div>
         </section>
 
-        <!-- SECTION 2: BRAND CREATION -->
+        <!-- SECTION II: THE GENERATIONAL PARADIGM -->
         <section class="fade-in-section">
             <h2>II. The Evolution of Legacy</h2>
             <p>To ensure generational continuity, we must view the estate through the lens of modern luxury brand building. A name that beautifully translates to "Move towards the forest" holds immense narrative power. The goal is to make every square inch of the property reflect that deep, resonant promise.</p>
             <p>You have already created a robust structural infrastructure and vibrant horticultural elements. The next tier of hospitality seamlessly weaves these elements together to create a cohesive psychological journey for the guest. When affluent travelers invest ₹25,000+ a night, they are purchasing more than a beautiful room and a scenic view; they are purchasing an immersive emotional escape.</p>
         </section>
 
-        <!-- SECTION 3: THE LANDSCAPE MULTIPLIER -->
+        <!-- SECTION III: ROI INFOGRAPHIC -->
         <section class="fade-in-section">
-            <h2>III. The Landscape Multiplier: Elevating to Premium</h2>
-            <p>Experiential Landscape Architecture is the vital bridge between a beautifully engineered property and a world-class luxury destination. Here is how strategic design unlocks premium valuation:</p>
-
-            <div class="value-grid">
-                <div class="value-card">
-                    <h3><span>WHY</span> The Psychology of Value</h3>
-                    <p>Infrastructure provides comfort, but landscape provides emotion. Premium pricing is commanded by emotional resonance. By curating the micro-climates, shadows, sounds, and textures of the environment, we increase the guest's perceived value of their stay. The longer a guest comfortably dwells in your outdoor spaces, the deeper their connection to your brand, and the higher their ancillary spending (F&B, amenities).</p>
+            <h2>III. The ROI of Experiential Landscape</h2>
+            <p>In the luxury hospitality sector, aspirational landscape design is not a decorative expense; it is a primary revenue driver. Global benchmarks for boutique nature resorts show that transitioning to experiential landscape architecture yields definitive financial returns:</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">+40%</div>
+                    <div class="stat-title">Room Rate Premium</div>
+                    <div class="stat-desc">Properties with curated sensory landscapes command significantly higher ADR (Average Daily Rate) than those with standard municipal-style horticulture.</div>
                 </div>
-                
-                <div class="value-card">
-                    <h3><span>WHAT</span> Sensory Choreography</h3>
-                    <p>It is the transition from ornamental decoration to immersive ecosystems. We design "Sensory Choreography"—ensuring that the temperature drops naturally as guests enter shaded canopies, that the sound of your magnificent water bodies guides their pathways, and that native, climate-responsive flora creates an authentic, grounded connection to the Western Ghats.</p>
+                <div class="stat-card">
+                    <div class="stat-number">+25%</div>
+                    <div class="stat-title">F&B Revenue Dwell Time</div>
+                    <div class="stat-desc">Micro-climate engineering (curated shade, wind channeling) keeps guests outside of their rooms longer, directly increasing ancillary spending.</div>
                 </div>
-
-                <div class="value-card">
-                    <h3><span>WHERE</span> High-Friction to High-Impact</h3>
-                    <p>We do not need to alter everything; we intervene strategically in zones of high emotional impact. This means reimagining the arrival threshold (the reception) so it feels like stepping directly into the forest. It means curating the pool deck with intelligent shading to make it a luxurious all-day oasis. It means softening the edges where your grand architecture meets the natural wild.</p>
-                </div>
-
-                <div class="value-card">
-                    <h3><span>HOW</span> Seamless Integration</h3>
-                    <p>We work <em>with</em> your existing infrastructure. My role as a Landscape Architect is to act as a multiplier to your current horticultural and engineering successes. We introduce soft engineering, narrative placemaking, and native biodiversity layers that elegantly drape over your existing hardscapes, enhancing them without requiring disruptive demolition.</p>
-                </div>
-
-                <div class="value-card">
-                    <h3><span>HOW MUCH</span> Containerized Value Creation</h3>
-                    <p>Strategic elevation is not an unquantifiable expense; it is a measurable investment. We scale the intervention to match your comfort and cash flow, utilizing phased rollouts. From high-level advisory insights to targeted spatial redesigns, the investment is tightly containerized to ensure maximum visual and experiential ROI at every step.</p>
+                <div class="stat-card">
+                    <div class="stat-number">-20%</div>
+                    <div class="stat-title">Operational Maintenance</div>
+                    <div class="stat-desc">Transitioning from high-water exotic horticulture to native, climate-adaptive biodiversity reduces long-term watering and labor overheads.</div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 4: THE ENGAGEMENT TIERS -->
+        <!-- SECTION IV: COMPARISON INFOGRAPHIC -->
         <section class="fade-in-section">
-            <h2>IV. The Containerized Engagement Model</h2>
+            <h2>IV. The Paradigm Shift</h2>
+            <p>You have successfully implemented a robust horticultural program. To achieve premium brand status, we must elevate this existing system. Here is how Landscape Architectural Design differs from the current approach, and why it is necessary for the next phase of growth:</p>
+
+            <div class="comparison-table">
+                <div class="comp-col comp-old">
+                    <h3>The Horticultural Foundation<br><span style="font-size:0.8rem;font-family:'Montserrat';font-weight:400;">(Current Operations)</span></h3>
+                    
+                    <div class="comp-item">
+                        <div class="comp-title">Focus of Design</div>
+                        <div class="comp-text">Focuses on the health, arrangement, and visual beauty of individual plants and flower beds.</div>
+                    </div>
+                    <div class="comp-item">
+                        <div class="comp-title">Water Management</div>
+                        <div class="comp-text">Treats water as a hazard to be removed. Uses impermeable drains to quickly shed high rainfall off the property.</div>
+                    </div>
+                    <div class="comp-item">
+                        <div class="comp-title">Guest Interaction</div>
+                        <div class="comp-text">Designed to be viewed passively. "Look, but do not touch." Similar to municipal public gardens.</div>
+                    </div>
+                </div>
+
+                <div class="comp-col comp-new">
+                    <h3>Experiential Landscape Architecture<br><span style="font-size:0.8rem;font-family:'Montserrat';font-weight:400;">(The Premium Elevation)</span></h3>
+                    
+                    <div class="comp-item">
+                        <div class="comp-title">Focus of Design</div>
+                        <div class="comp-text">Focuses on the <strong>human psychological reaction</strong> to the spatial environment and sensory stimuli.</div>
+                    </div>
+                    <div class="comp-item">
+                        <div class="comp-title">Water Management</div>
+                        <div class="comp-text">Treats water as an asset. Uses soft engineering (swales, naturalized streams) to manage rainfall ecologically while creating soothing auditory luxury.</div>
+                    </div>
+                    <div class="comp-item">
+                        <div class="comp-title">Guest Interaction</div>
+                        <div class="comp-text">Designed to be inhabited. Creates immersive "Sensory Choreography" that surrounds and envelops the guest in the wild.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION V: THE LANDSCAPE MULTIPLIER -->
+        <section class="fade-in-section">
+            <h2>V. The Landscape Multiplier: Value Creation</h2>
+            <p>Experiential Landscape Architecture is the vital bridge between a beautifully engineered property and a world-class luxury destination.</p>
+
+            <div class="value-grid">
+                <div class="value-card">
+                    <h3><span>WHY</span> The Psychology of Value</h3>
+                    <p>Infrastructure provides comfort, but landscape provides emotion. Premium pricing is commanded by emotional resonance. By curating the micro-climates, shadows, sounds, and textures of the environment, we increase the guest's perceived value of their stay.</p>
+                </div>
+                <div class="value-card">
+                    <h3><span>WHAT</span> Sensory Choreography</h3>
+                    <p>It is the transition from ornamental decoration to immersive ecosystems. We design ensuring that the temperature drops naturally as guests enter shaded canopies, that the sound of your magnificent water bodies guides their pathways, and that native flora creates an authentic connection to the Western Ghats.</p>
+                </div>
+                <div class="value-card">
+                    <h3><span>HOW</span> Seamless Integration</h3>
+                    <p>We work <em>with</em> your existing infrastructure. My role as a Landscape Architect is to act as a multiplier to your current horticultural and engineering successes. We introduce soft engineering and narrative placemaking that elegantly drape over your existing hardscapes, enhancing them without requiring disruptive demolition.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION VI: SPATIAL VALUE MAP -->
+        <section class="fade-in-section">
+            <h2>VI. Spatial Value Mapping</h2>
+            <p>Where does Greenscape Designz intervene? We execute surgical, high-impact interventions in zones that dictate the guest's perception of value.</p>
+
+            <div class="value-map">
+                <div class="map-node">
+                    <div class="map-title">The Arrival & Reception <span class="map-metric">Value Anchor</span></div>
+                    <p><strong>The Intervention:</strong> Transforming the drop-off from a transactional driveway into an immersive forest threshold.<br>
+                    <strong>The Value:</strong> The first 30 seconds dictate the guest's perception of their ₹15,000+ investment. If the reception feels like a true sanctuary, the price anchor is immediately validated.</p>
+                </div>
+                <div class="map-node">
+                    <div class="map-title">The Pool & Leisure Decks <span class="map-metric">Revenue Generator</span></div>
+                    <p><strong>The Intervention:</strong> Curating specific micro-climates using structural canopy shading and wind movement around large open, hot spaces.<br>
+                    <strong>The Value:</strong> A visually beautiful but physically hot pool deck is abandoned by noon. An intelligently shaded, climate-controlled deck encourages guests to stay, order food, and linger for hours.</p>
+                </div>
+                <div class="map-node">
+                    <div class="map-title">The Waterways & Pathways <span class="map-metric">Sensory Choreography</span></div>
+                    <p><strong>The Intervention:</strong> Softening rigid drainage membranes into naturalized, ecological stream paths that support ground-layer vegetation.<br>
+                    <strong>The Value:</strong> Replaces the look of "civic infrastructure" with the feel of an untouched, premium wilderness. It turns transit walks into memorable, photogenic experiences.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION VII: CONTAINERIZED ENGAGEMENT (TABS) -->
+        <section class="fade-in-section">
+            <h2>VII. The Containerized Engagement Model</h2>
             <p>Greenscape Designz offers a structured, scalable partnership. This model is designed to support your existing team, bringing specialized experiential expertise exactly where and when you need it.</p>
 
             <div class="tabs">
@@ -478,9 +367,9 @@
             </div>
         </section>
 
-        <!-- SECTION 5: INTELLIGENT QUESTIONS -->
+        <!-- SECTION VIII: THE VISIONARY'S AUDIT (ACCORDIONS) -->
         <section class="fade-in-section">
-            <h2>V. The Visionary's Audit</h2>
+            <h2>VIII. The Visionary's Audit</h2>
             <p>As you reflect on the incredible legacy you are building, consider these strategic prompts:</p>
 
             <div class="accordion">
@@ -523,13 +412,8 @@
     </div>
 
     <script>
-        // Intersection Observer for Fade-in animation
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
+        // Intersection Observer for scroll animations
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -538,7 +422,6 @@
                 }
             });
         }, observerOptions);
-
         document.querySelectorAll('.fade-in-section').forEach(section => {
             observer.observe(section);
         });
