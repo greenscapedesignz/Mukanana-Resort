@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mookanana Strategic Infographics | Greenscape Designz</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        :root {
+            --bg-deep: #0a120d; 
+            --bg-card: #132218;
+            --accent-gold: #d4af37;
+            --accent-mute: #9c8435;
+            --text-main: #f4f1ea; 
+            --text-dim: #a8a9a6;
+            --eco-green: #2e4a3d;
+            --eco-light: #5a7d6a;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 4rem 2rem;
+            line-height: 1.6;
+        }
+
+        h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; color: var(--accent-gold); text-align: center; margin-bottom: 1rem; }
+        p.subtitle { text-align: center; color: var(--text-dim); margin-bottom: 4rem; font-size: 1.1rem; }
+
+        .infographic-container {
+            max-width: 1000px;
+            margin: 0 auto 8rem auto;
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 4rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* --- 1. ILI FRAMEWORK (FLOWCHART) --- */
+        .ili-flow {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 3rem;
+        }
+        .ili-flow::before {
+            content: ''; position: absolute; top: 40px; left: 10%; right: 10%; height: 2px;
+            background: rgba(212, 175, 55, 0.3); z-index: 1;
+        }
+        .ili-step {
+            position: relative; z-index: 2; width: 22%; text-align: center;
+        }
+        .ili-icon {
+            width: 80px; height: 80px; background: var(--bg-deep);
+            border: 2px solid var(--accent-gold); border-radius: 50%;
+            margin: 0 auto 1.5rem auto; display: flex; align-items: center; justify-content: center;
+            font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--accent-gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+        .ili-title { font-weight: 600; color: var(--text-main); margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+        .ili-desc { font-size: 0.85rem; color: var(--text-dim); }
+
+        /* --- 2. LAYERED HABITAT MATRIX --- */
+        .habitat-wrapper { display: flex; gap: 3rem; align-items: center; margin-top: 3rem; }
+        .habitat-bird {
+            flex: 1; text-align: center; padding: 2rem;
+            background: radial-gradient(circle at center, var(--eco-green) 0%, var(--bg-deep) 100%);
+            border-radius: 50%; border: 1px solid var(--eco-light);
+        }
+        .habitat-bird h3 { font-family: 'Cinzel', serif; color: var(--accent-gold); font-size: 1.5rem; margin-bottom: 0.2rem; }
+        .habitat-bird p { font-size: 0.8rem; font-style: italic; color: var(--text-dim); margin-bottom: 1rem; }
+        
+        .habitat-layers { flex: 1.5; display: flex; flex-direction: column; gap: 1rem; }
+        .layer-card {
+            background: rgba(0,0,0,0.3); border-left: 4px solid var(--eco-light);
+            padding: 1.5rem; border-radius: 4px;
+        }
+        .layer-card h4 { margin: 0 0 0.5rem 0; color: var(--eco-light); font-family: 'Montserrat', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
+        .layer-card p { margin: 0; font-size: 0.9rem; color: var(--text-dim); }
+
+        /* --- 3. GDHI DASHBOARD --- */
+        .gdhi-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; margin-bottom: 3rem; }
+        .gdhi-brand { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--accent-gold); }
+        .gdhi-brand span { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 3px; color: var(--text-dim); display: block; text-transform: uppercase; }
+        .gdhi-score { text-align: right; }
+        .gdhi-score .num { font-size: 3rem; font-family: 'Cinzel', serif; color: var(--text-main); line-height: 1; }
+        
+        .gdhi-metrics { display: flex; justify-content: space-between; gap: 2rem; }
+        .metric-dial { text-align: center; width: 30%; }
+        .circular-chart { display: block; margin: 0 auto; max-width: 120px; max-height: 120px; }
+        .circle-bg { fill: none; stroke: rgba(255,255,255,0.05); stroke-width: 3; }
+        .circle { fill: none; stroke-width: 3; stroke-linecap: round; animation: progress 1s ease-out forwards; }
+        .c-gold { stroke: var(--accent-gold); }
+        .c-green { stroke: var(--eco-light); }
+        .c-mute { stroke: var(--accent-mute); }
+        .percentage { fill: #fff; font-family: 'Montserrat', sans-serif; font-size: 0.6rem; text-anchor: middle; font-weight: bold; }
+        @keyframes progress { 0% { stroke-dasharray: 0 100; } }
+        
+        .metric-title { margin-top: 1rem; font-weight: 600; font-size: 0.9rem; color: var(--text-main); }
+        .metric-desc { font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem; }
+
+        @media (max-width: 768px) {
+            .ili-flow { flex-direction: column; gap: 2rem; }
+            .ili-flow::before { display: none; }
+            .ili-step { width: 100%; }
+            .habitat-wrapper { flex-direction: column; }
+            .gdhi-metrics { flex-direction: column; }
+            .metric-dial { width: 100%; margin-bottom: 2rem; }
+            .infographic-container { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- INFOGRAPHIC 1: ILI FRAMEWORK -->
+    <h2>Governance & Performance</h2>
+    <p class="subtitle">Transforming landscape architecture into a measurable, auditable discipline.</p>
+    
+    <div class="infographic-container">
+        <h3 style="text-align: center; color: var(--text-main); font-family: 'Cinzel'; margin-bottom: 0.5rem; font-size: 1.8rem;">Integrated Landscape Intelligence™ (ILI™)</h3>
+        <p style="text-align: center; color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem;">A Proprietary Framework by Greenscape Designz</p>
+        
+        <div class="ili-flow">
+            <div class="ili-step">
+                <div class="ili-icon">01</div>
+                <div class="ili-title">Diagnostic Audit</div>
+                <div class="ili-desc">Mapping existing topography, rainfall volume, and current horticultural constraints.</div>
+            </div>
+            <div class="ili-step">
+                <div class="ili-icon">02</div>
+                <div class="ili-title">Soft Engineering</div>
+                <div class="ili-desc">Re-engineering hard impermeable drains into naturalized, surface-water ecological flows.</div>
+            </div>
+            <div class="ili-step">
+                <div class="ili-icon">03</div>
+                <div class="ili-title">Sensory Integration</div>
+                <div class="ili-desc">Applying native canopy structures to choreograph micro-climates and acoustic boundaries.</div>
+            </div>
+            <div class="ili-step">
+                <div class="ili-icon">04</div>
+                <div class="ili-title">Yield Measurement</div>
+                <div class="ili-desc">Tracking increased F&B dwell times, operational savings, and brand advocacy metrics.</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- INFOGRAPHIC 2: HABITAT MATRIX -->
+    <h2>Ecological Dependencies</h2>
+    <p class="subtitle">Moving from ornamental decoration to native, layered biodiversity.</p>
+
+    <div class="infographic-container">
+        <div class="habitat-wrapper">
+            <div class="habitat-bird">
+                <!-- SVG Bird Placeholder for pure code rendering -->
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 1rem;">
+                    <path d="M12 2C8 2 4 5 4 10c0 4 3 8 8 12 5-4 8-8 8-12 0-5-4-8-8-8z"></path>
+                    <path d="M12 6v4"></path>
+                    <path d="M10 10h4"></path>
+                </svg>
+                <h3>Indian Roller</h3>
+                <p>Coracias benghalensis</p>
+                <p style="color: var(--text-main); font-size: 0.9rem; line-height: 1.5;">An indicator species of a healthy, multi-layered resort ecosystem. Impossible to attract with standard municipal horticulture.</p>
+            </div>
+            
+            <div class="habitat-layers">
+                <div class="layer-card">
+                    <h4>1. The Canopy Layer (Shade & Shelter)</h4>
+                    <p>Tall native trees providing thermal regulation for guest pool decks while serving as perching and observation posts for indicator avian species.</p>
+                </div>
+                <div class="layer-card" style="border-left-color: var(--eco-green);">
+                    <h4>2. The Understory (Acoustic Masking)</h4>
+                    <p>Mid-level shrubs and broadleaf flora that absorb mechanical resort noise while providing nesting safety and foraging grounds.</p>
+                </div>
+                <div class="layer-card" style="border-left-color: var(--accent-mute);">
+                    <h4>3. The Ground Layer (Soil Retention)</h4>
+                    <p>Replacing concrete drains with water-retaining natural groundcover. Filters rainfall runoff and creates micro-habitats for crucial insect life.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- INFOGRAPHIC 3: GDHI DASHBOARD -->
+    <h2>Experiential ROI</h2>
+    <p class="subtitle">Quantifying the psychological value of spatial design.</p>
+
+    <div class="infographic-container">
+        <div class="gdhi-header">
+            <div class="gdhi-brand">
+                EmOL'scape™
+                <span>Greenscape Designz Happiness Index (GDHI)</span>
+            </div>
+            <div class="gdhi-score">
+                <div class="num" style="color: var(--accent-gold);">94%</div>
+                <div style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px;">Target Premium Score</div>
+            </div>
+        </div>
+
+        <div class="gdhi-metrics">
+            <div class="metric-dial">
+                <svg viewBox="0 0 36 36" class="circular-chart">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle c-gold" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <text x="18" y="20.35" class="percentage">85%</text>
+                </svg>
+                <div class="metric-title">Thermal Comfort</div>
+                <div class="metric-desc">Reduction of heat reflection via canopy shading, extending usable outdoor F&B hours.</div>
+            </div>
+
+            <div class="metric-dial">
+                <svg viewBox="0 0 36 36" class="circular-chart">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle c-green" stroke-dasharray="92, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <text x="18" y="20.35" class="percentage">92%</text>
+                </svg>
+                <div class="metric-title">Auditory Masking</div>
+                <div class="metric-desc">Strategic placement of naturalized waterways to drown out operational resort noise.</div>
+            </div>
+
+            <div class="metric-dial">
+                <svg viewBox="0 0 36 36" class="circular-chart">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle c-mute" stroke-dasharray="78, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <text x="18" y="20.35" class="percentage">78%</text>
+                </svg>
+                <div class="metric-title">Biophilic Engagement</div>
+                <div class="metric-desc">Guest interaction rate with ecological focal points vs. transit-only behavior.</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
